@@ -1,12 +1,12 @@
 @section('title', 'Dashboard')
-@section('css')
+@push('css')
     <style>
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
     </style>
-@endsection
+@endpush
 <div>
     <div class="page-heading">
         <h3>Dashboard</h3>

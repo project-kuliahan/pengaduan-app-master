@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('gambar');
             $table->enum('status', ['pending', 'diproses', 'selesai'])->default('pending');
-            $table->text('respon');
+            $table->text('respon')->nullable(); 
             $table->timestamps();
         });
     }

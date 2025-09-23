@@ -2,10 +2,10 @@
 <div>
     <div class="page-heading">
         <h3>Laporan</h3>
-    </div> 
+    </div>
 
     <div class="d-flex justify-content-end align-items-center mb-3">
-        <a href="#" class="btn btn-primary">Tambah Laporan</a>
+        <a href="{{ route('user.laporan.create') }}" wire:navigate class="btn btn-primary">Tambah Laporan</a>
     </div>
 
     <section class="section">
@@ -18,7 +18,7 @@
                 <input type="text" wire:model.live="search" class="form-control w-25" placeholder="Cari Laporan...">
             </div>
 
-            <div wire:loading.delay>
+            <div wire:loading.delay wire:target="search">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -28,7 +28,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div wire:loading.remove>
+                    <div wire:loading.remove wire:target="search">
                         <table class="table table-striped" id="table1">
                             <thead>
                                 <tr>
@@ -60,22 +60,29 @@
                                                     @else
                                                         bg-light-success
                                                     @endif">
-                                                    {{ ucwords($laporan->status)  }}
+                                            {{ ucwords($laporan->status)  }}
                                         </span>
                                     </td>
                                     <td class="text-center">
                                         <!-- <a href="#" class="btn btn-primary">Detail</a> -->
                                         <a href="#" class="btn btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                        <button
+                                            class="btn btn-danger"
+                                            wire:click="deleteConfirm({{ $laporan->id }}, '{{ $laporan->judul }}')"
+                                            wire:loading.attr="disabled"
+                                            wire:target="deleteConfirm,delete">Hapus</button>
                                     </td>
-                                </tr>   
-                                @endforeach                     
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </div>
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush
