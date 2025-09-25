@@ -15,7 +15,7 @@ class Login extends Component
     public string $idUser = '';
 
     #[Validate('required', message: 'Password wajib diisi.')]
-    #[Validate('min:6', message: 'Password minimal 6 karakter.')]
+    // #[Validate('min:6', message: 'Password minimal 6 karakter.')]
     public string $password = '';
 
     public bool $remember = false;

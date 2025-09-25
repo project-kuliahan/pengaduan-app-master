@@ -65,7 +65,7 @@
                                     </td>
                                     <td class="text-center">
                                         <!-- <a href="#" class="btn btn-primary">Detail</a> -->
-                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('user.laporan.edit', $laporan->id) }}" wire:navigate class="btn btn-warning">Edit</a>
                                         <button
                                             class="btn btn-danger"
                                             wire:click="deleteConfirm({{ $laporan->id }}, '{{ $laporan->judul }}')"

@@ -73,7 +73,7 @@
                     </li>
 
                     <li
-                        class="sidebar-item {{ request()->routeIs('user.laporan') || request()->routeIs('user.laporan.create') ? 'active' : '' }}">
+                        class="sidebar-item {{ request()->routeIs('user.laporan') || request()->routeIs('user.laporan.create') || request()->routeIs('user.laporan.edit') ? 'active' : '' }}">
                         <a href="{{ route('user.laporan') }}" class='sidebar-link' wire:navigate>
                             <i class="bi bi-stack"></i>
                             <span>Laporan</span>
@@ -84,10 +84,11 @@
                     <li class="sidebar-title">Akun</li>
 
                     <li
-                        class="sidebar-item">
-                        <a href="#" class='sidebar-link'>
+                        class="sidebar-item {{ $currentRoute === 'user.profile' || $currentRoute === 'livewire.update' ? 'active' : '' }}">
+                        <a href="{{ route('user.profile') }}" wire:navigate class='sidebar-link'>
                             <i class="bi bi-person"></i>
-                            <span>{{ Auth::user()->name }}</span>
+                            <!-- <span>{{ $currentRoute }}</span> -->
+                            <span>{{ $user->name }}</span>
                         </a>
                     </li>
 
